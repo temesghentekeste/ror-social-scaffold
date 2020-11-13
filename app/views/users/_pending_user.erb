@@ -1,0 +1,7 @@
+
+<% @pending_friends.each do |pending|%>
+    <p><%= pending.name%></p>
+    <%= button_to('Confirm', friendship_path(id: pending.id), method: :patch) %>
+    <p><%#= pending.invitees.confirmed %></p>
+
+<% end %>

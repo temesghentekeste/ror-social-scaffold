@@ -2,4 +2,10 @@
   <ul class="users-list">
     <%= render @users %>
   </ul>
+
+  <ul class='friend-requests'>
+    <% @pending_friends=current_user.pending_friends %>
+    <h1>Friend Requests <span><%= @pending_friends.size %></span></h1>
+    <%= render 'pending_user' %>
+  </ul>
 </section>

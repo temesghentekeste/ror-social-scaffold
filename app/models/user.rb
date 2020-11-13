@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -10,31 +8,32 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
-  has_many :friendships, :class_name => "Friendship", :foreign_key => "invitor_id"
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "invitee_id"
+  has_many :pending_friendships, -> { where confirmed: false}, class_name: 'Friendship', foreign_key: 'invitor_id', dependent: :destroy
 
-  def friends
-    friends_array = friendships.map{|friendship| friendship.invitee if friendship.confirmed}
-    friends_array + inverse_friendships.map{|friendship| friendship.invitor if friendship.confirmed}
-    friends_array.compact
+  has_many :received_friendships,  -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'invitee_id', dependent: :destroy
+
+  has_many :confirmed_friendships,  -> { where confirmed: true }, class_name: 'Friendship', foreign_key: 'invitor_id', dependent: :destroy
+
+  has_many :pending_friends, through: :pending_friendships, source: :invitee
+  has_many :received_friends, through: :received_friendships, source: :invitor
+  has_many :confirmed_friends, through: :confirmed_friendships, source: :invitee
+
+
+  def send_request(user)
+    pending_friendships.create!(invitee_id: user.id, confirmed: false)
   end
 
-  def pending_friends
-    friendships.map{|friendship| friendship.invitee if !friendship.confirmed}.compact
-  end
-
-  # Users who have requested to be friends
-  def friend_requests
-    inverse_friendships.map{|friendship| friendship.invitor if !friendship.confirmed}.compact
-  end
-
-  def confirm_friend(user)
-    friendship = inverse_friendships.find{|friendship| friendship.invitor == user}
+  def confirm_request(user)
+    friendship = received_friendships.find_by(invitor_id: user.id)
     friendship.confirmed = true
     friendship.save
   end
 
-  def friend?(user)
-    friends.include?(user)
+  def sent_request?(user)
+    pending_friends.include?(user)
+  end
+  
+  def friends_with?(user)
+    confirmed_friends.include?(user) || user.confirmed_friends.include?(self)
   end
 end
