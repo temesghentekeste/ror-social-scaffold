@@ -12,4 +12,29 @@ class User < ApplicationRecord
 
   has_many :friendships, :class_name => "Friendship", :foreign_key => "invitor_id"
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "invitee_id"
+
+  def friends
+    friends_array = friendships.map{|friendship| friendship.invitee if friendship.confirmed}
+    friends_array + inverse_friendships.map{|friendship| friendship.invitor if friendship.confirmed}
+    friends_array.compact
+  end
+
+  def pending_friends
+    friendships.map{|friendship| friendship.invitee if !friendship.confirmed}.compact
+  end
+
+  # Users who have requested to be friends
+  def friend_requests
+    inverse_friendships.map{|friendship| friendship.invitor if !friendship.confirmed}.compact
+  end
+
+  def confirm_friend(user)
+    friendship = inverse_friendships.find{|friendship| friendship.invitor == user}
+    friendship.confirmed = true
+    friendship.save
+  end
+
+  def friend?(user)
+    friends.include?(user)
+  end
 end
