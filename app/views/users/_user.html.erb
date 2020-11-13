@@ -1,6 +1,15 @@
 <li>
   Name: <%= user.name %>
   <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
+    <% if user == current_user%>
+      <%= link_to 'Your Profile',  user_path(user), class: 'profile-link' %>
+    <% else %>
+      <%= link_to 'View Profile',  user_path(user), class: 'profile-link'%>
+      <% unless current_user.pending_friends.include?(user) %>
+        <%= link_to(user_friendships_path(user), method: :post) do %>
+          <button>Send friend Request</button>
+        <% end %>
+      <% end %>
+    <%end %>
   </span>
 </li>
