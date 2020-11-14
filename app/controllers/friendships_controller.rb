@@ -2,24 +2,36 @@ class FriendshipsController < ApplicationController
   before_action :authenticate_user!, only: %i[create]
 
   def create
-    other_user = User.find(params[:user_id])
-    
-    @friendship = Friendship.new(invitor_id: current_user.id, invitee_id: other_user.id)
-    @friendship.confirmed = false
-    @friendship.save
-    flash[:notice] = 'Friend request sent!'
-
-
-    redirect_to users_path()
-  end
-
-  def update
-    other_user = User.find(params[:id])
-    @friendship = Friendship.find_by(invitor_id: current_user.id, invitee_id: params[:id])
-    @friendship.confirmed = true
-    @friendship.save
-
-    flash[:notice] = 'Your friendship have been confimed successfully.'
+    invited = User.find(params[:id])
+    if current_user.send_request(invited)
+      flash[:notice] = 'Friend request sent!'
+    else
+      flash[:alert] = 'Something went wrong, try again.'
+    end
     redirect_to users_path
   end
+  
+  def update
+    friendship = Friendship.find(params[:id])
+    friendship.confirmed = true
+    if friendship.save
+      flash[:notice] = 'Your friendship have been confimed successfully.'
+    else
+      flash[:alert] = 'Something went wrong, try again.'
+    end
+
+    redirect_to users_path
+  end
+
+  def destroy
+    friendship = Friendship.find(params[:id])
+    friendship.destroy
+    if current_user == friendship.invitor
+      flash[:notice] = 'Friend request is cancelled successfully'
+    else
+      flash[:notice] = "You have rejected the friend request successfully"
+    end
+    redirect_to users_path
+  end
+
 end

@@ -26,14 +26,13 @@ class User < ApplicationRecord
   def confirm_request(user)
     friendship = received_friendships.find_by(invitor_id: user.id)
     friendship.confirmed = true
-    friendship.save
   end
 
   def sent_request?(user)
     pending_friends.include?(user)
   end
   
-  def friends_with?(user)
+  def friend_with?(user)
     confirmed_friends.include?(user) || user.confirmed_friends.include?(self)
   end
 end

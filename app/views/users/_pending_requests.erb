@@ -1,0 +1,5 @@
+<h2>Requested <%= current_user.pending_friendships.count %></h2>
+<% current_user.pending_friendships.each do |pending|%>
+    <p><%= pending.invitee.name%></p>
+    <%= button_to('Cancel Request', friendship_path(id: pending.id), method: :delete) %>
+<% end %>

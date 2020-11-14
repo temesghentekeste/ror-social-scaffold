@@ -1,11 +1,17 @@
 <section class="users-section">
+  <h2>Name: <%= current_user.name %></h2>
+  <span class="profile-link">
+      <%= link_to 'Your Profile',  user_path(current_user), class: 'profile-link' %>
+  </span>
   <ul class="users-list">
+    <h2>People You May Know</h2>
     <%= render @users %>
   </ul>
-
-  <ul class='friend-requests'>
-    <% @pending_friends=current_user.pending_friends %>
-    <h1>Friend Requests <span><%= @pending_friends.size %></span></h1>
-    <%= render 'pending_user' %>
+    <%= render 'pending_requests' %>
+  <div>
   </ul>
+    <%= render 'received_requests' %>
+  <div>
+    
+  </div>
 </section>
