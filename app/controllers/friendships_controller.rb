@@ -1,5 +1,5 @@
 class FriendshipsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create]
+  before_action :authenticate_user!
 
   def create
     invited = User.find(params[:id])

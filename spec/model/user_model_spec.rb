@@ -54,7 +54,5 @@ RSpec.describe 'User Model Tests', type: :model do
       isFriend = @invitor.friend_with? (@invitee)
       expect(isFriend).to be false 
     end
-   
   end
-
 end
