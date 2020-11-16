@@ -1,6 +1,0 @@
-<h2>Requests <%= current_user.received_friendships.count %></h2>
-<% current_user.received_friendships.each do |received|%>
-    <p><%= received.invitor.name%></p>
-    <%= button_to('Confirm', friendship_path(received.id), method: :put) %>
-    <%= button_to('Cancel', friendship_path(id: received.id), method: :delete) %>
-<% end %>

@@ -57,7 +57,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 60%;
     justify-content: space-between;
 
     .menu-item {
@@ -311,6 +311,45 @@ form {
   }
 }
 
+.user-card {
+  background: rgb(21,19,50);
+  background: linear-gradient(90deg, rgba(21,19,50,1) 20%, rgba(86,146,95,1) 41%, rgba(6,30,52,1) 100%);
+  border-radius: 2%;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bdbdbd;
+  color: white;
+
+  p {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  .user-footer {
+    background: #bdbdbd;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 1rem auto;
+    border: 1px solid green;
+
+    form {
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-cancel {
+      background-color: red;
+    }
+  }
+}
+
 #error_explanation {
   h2 {
     color: $primary-color-text;
@@ -345,5 +384,9 @@ form {
   .users-section,
   .user-section {
     width: 50%;
+  }
+
+  .user-card {
+    width: 40%;
   }
 }

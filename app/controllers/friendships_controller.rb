@@ -34,4 +34,12 @@ class FriendshipsController < ApplicationController
     redirect_to users_path
   end
 
+  def pending_requests
+    @pending_friendships = current_user.pending_friendships
+  end
+
+  def incoming_requests
+    @received_friendships = current_user.received_friendships
+  end
+
 end
