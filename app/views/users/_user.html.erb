@@ -1,10 +1,22 @@
-<li>
   <% unless current_user == user%>
     <% if current_user.friend_with?(user)%>
       <% return %>
+     <% elsif current_user.received_friends.include?(user) %>
+        <% friendship = Friendship.find_by( invitor_id: user.id, invitee_id: current_user.id) %>
+
+        <div class="user-card">
+            <p class="user-header"><%= user.name%></p>
+            <div class="user-footer">
+                <%= button_to('Confirm', friendship_path(friendship.id), method: :put) %>
+                <%= button_to('Cancel', friendship_path(id: friendship.id),class:'btn-cancel', method: :delete) %>
+            </div>
+        </div>
     <% elsif !current_user.pending_friends.include?(user) %>
-      <%= user.name%>
-      <%= button_to 'Send Request', friendships_path, params: {:id   => user.id }  %>
+       <div class="user-card">
+            <p class="user-header"><%= user.name%></p>
+            <div class="user-footer">
+              <%= button_to 'Send Request', friendships_path, params: {:id   => user.id }  %>
+            </div>
+        </div>
     <% end %>
   <% end %>
-</li>

@@ -276,13 +276,27 @@ form {
 }
 
 .users-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   margin: 10px;
 
-  .users-list li {
-    margin-bottom: 16px;
-    text-transform: capitalize;
-    font-size: 1.2em;
+  .users-list  {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .user-card {
+      margin-right: 3rem;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+    }
   }
 
   .profile-link {
@@ -347,6 +361,10 @@ form {
     .btn-cancel {
       background-color: red;
     }
+
+    input {
+      width: 60%;
+    }
   }
 }
 
@@ -368,7 +386,6 @@ form {
 
   .new_post,
   .timeline,
-  .users-section,
   .user-section {
     width: 70%;
   }
@@ -381,7 +398,6 @@ form {
 
   .new_post,
   .timeline,
-  .users-section,
   .user-section {
     width: 50%;
   }
@@ -389,4 +405,5 @@ form {
   .user-card {
     width: 40%;
   }
+
 }

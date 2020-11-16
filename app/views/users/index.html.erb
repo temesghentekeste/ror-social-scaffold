@@ -3,8 +3,8 @@
   <span class="profile-link">
       <%= link_to 'Your Profile',  user_path(current_user), class: 'profile-link' %>
   </span>
-  <ul class="users-list">
-    <h2>People You May Know</h2>
+  <h2>People You May Know</h2>
+  <div class="users-list">
     <%= render @users %>
-  </ul>
+  </div>
 </section>
