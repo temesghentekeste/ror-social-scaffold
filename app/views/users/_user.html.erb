@@ -1,10 +1,22 @@
   <% unless current_user == user%>
     <% if current_user.friend_with?(user)%>
-      <% return %>
+        <% friendship = Friendship.find_by( invitor_id: user.id, invitee_id: current_user.id) %>
+       <div class="user-card">
+            <div class="rounded-image">
+              <%= gravatar_for user, size: 150 %>
+            </div>
+            <p class="user-header"><%= user.name%></p>
+            <div class="user-footer">
+                <%= button_to('Unfriend', friendship_path(id: friendship.id),class:'btn-cancel', method: :delete) %>
+            </div>
+        </div>
      <% elsif current_user.received_friends.include?(user) %>
         <% friendship = Friendship.find_by( invitor_id: user.id, invitee_id: current_user.id) %>
 
         <div class="user-card">
+            <div class="rounded-image">
+              <%= gravatar_for user, size: 150 %>
+            </div>
             <p class="user-header"><%= user.name%></p>
             <div class="user-footer">
                 <%= button_to('Confirm', friendship_path(friendship.id), method: :put) %>
@@ -13,10 +25,24 @@
         </div>
     <% elsif !current_user.pending_friends.include?(user) %>
        <div class="user-card">
+            <div class="rounded-image">
+              <%= gravatar_for user, size: 150 %>
+            </div>
             <p class="user-header"><%= user.name%></p>
             <div class="user-footer">
               <%= button_to 'Send Request', friendships_path, params: {:id   => user.id }  %>
             </div>
         </div>
+        <% elsif current_user.pending_friends.include?(user) %>
+        <% friendship = Friendship.find_by( invitor_id: current_user.id, invitee_id: user.id) %>
+        <div class="user-card">
+              <div class="rounded-image">
+                <%= gravatar_for user, size: 150 %>
+              </div>
+              <p class="user-header"><%= user.name%></p>
+              <div class="user-footer">
+                <%= button_to('Cancel Request', friendship_path(id: friendship.id),class:'btn-cancel', method: :delete) %>
+              </div>
+          </div>
     <% end %>
   <% end %>

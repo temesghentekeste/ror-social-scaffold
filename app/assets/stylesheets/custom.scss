@@ -196,6 +196,76 @@ form {
   text-transform: capitalize;
 }
 
+.user-card {
+  background: rgb(21, 19, 50);
+  background: linear-gradient(90deg, rgba(21, 19, 50, 1) 20%, rgba(86, 146, 95, 1) 41%, rgba(6, 30, 52, 1) 100%);
+  border-radius: 2%;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bdbdbd;
+  color: white;
+
+  p {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  .user-footer {
+    background: #bdbdbd;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 1rem auto;
+    border: 1px solid green;
+
+    form {
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-cancel {
+      background-color: red;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.users-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+
+  .users-list {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .user-card {
+      margin-right: 3rem;
+    }
+  }
+
+  .profile-link {
+    font-size: 0.8em;
+    margin: 0 0 8px 0;
+    color: $primary-color-dark;
+  }
+}
+
 .timeline {
   width: 100%;
   margin: 16px 0;
@@ -275,37 +345,6 @@ form {
   }
 }
 
-.users-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin: 10px;
-
-  .users-list  {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    flex: 1;
-    flex-wrap: wrap;
-    width: 100%;
-
-    .user-card {
-      margin-right: 3rem;
-    }
-
-    input[type="submit"] {
-      width: 100%;
-    }
-  }
-
-  .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
-  }
-}
-
 .user-section {
   width: 100%;
   margin-left: 16px;
@@ -325,49 +364,6 @@ form {
   }
 }
 
-.user-card {
-  background: rgb(21,19,50);
-  background: linear-gradient(90deg, rgba(21,19,50,1) 20%, rgba(86,146,95,1) 41%, rgba(6,30,52,1) 100%);
-  border-radius: 2%;
-  width: 100%;
-  margin: 1rem 0;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #bdbdbd;
-  color: white;
-
-  p {
-    font-weight: bold;
-    font-size: 1.6rem;
-  }
-
-  .user-footer {
-    background: #bdbdbd;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    width: 60%;
-    margin: 1rem auto;
-    border: 1px solid green;
-
-    form {
-      width: 100%;
-      text-align: center;
-    }
-
-    .btn-cancel {
-      background-color: red;
-    }
-
-    input {
-      width: 60%;
-    }
-  }
-}
-
 #error_explanation {
   h2 {
     color: $primary-color-text;
@@ -377,6 +373,39 @@ form {
   ul {
     color: #f00;
   }
+}
+
+.rounded-image img {
+  border-radius: 50%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.btn {
+  padding: 0.6rem 0.8rem;
+  margin: 0.5rem;
+
+  &-dark {
+    background: #9aa78f;
+  }
+
+  &-warning {
+    background: #a39b23;
+  }
+}
+
+.underline {
+  width: 5rem;
+  height: 0.25rem;
+  background: $primary-color-dark;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-heading {
+  margin-top: 2rem;
 }
 
 @media only screen and (min-width: 480px) {
@@ -405,5 +434,4 @@ form {
   .user-card {
     width: 40%;
   }
-
 }

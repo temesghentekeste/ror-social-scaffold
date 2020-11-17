@@ -10,7 +10,7 @@ class FriendshipsController < ApplicationController
     end
     redirect_to users_path
   end
-  
+
   def update
     friendship = Friendship.find(params[:id])
     friendship.confirmed = true
@@ -26,11 +26,11 @@ class FriendshipsController < ApplicationController
   def destroy
     friendship = Friendship.find(params[:id])
     friendship.destroy
-    if current_user == friendship.invitor
-      flash[:notice] = 'Friend request is cancelled successfully'
-    else
-      flash[:notice] = "You have rejected the friend request successfully"
-    end
+    flash[:notice] = if current_user == friendship.invitor
+                       'Friend request is cancelled successfully'
+                     else
+                       'You have rejected the friend request successfully'
+                     end
     redirect_to users_path
   end
 
@@ -41,5 +41,4 @@ class FriendshipsController < ApplicationController
   def incoming_requests
     @received_friendships = current_user.received_friendships
   end
-
 end

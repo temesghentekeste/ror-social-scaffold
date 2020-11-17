@@ -32,7 +32,6 @@ RSpec.describe 'User Model Tests', type: :model do
     it { should have_many(:pending_friends).through(:pending_friendships).source(:invitee) }
     it { should have_many(:received_friends).through(:received_friendships).source(:invitor) }
     it { should have_many(:confirmed_friends).through(:confirmed_friendships).source(:invitee) }
-
   end
 
   describe 'user methods' do
@@ -51,8 +50,8 @@ RSpec.describe 'User Model Tests', type: :model do
     end
 
     it 'should check if user is friend with another user' do
-      isFriend = @invitor.friend_with? (@invitee)
-      expect(isFriend).to be false 
+      is_friend = @invitor.friend_with? @invitee
+      expect(is_friend).to be false
     end
   end
 end

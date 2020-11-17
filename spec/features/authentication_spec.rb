@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature 'user authentication', type: :feature do
-
   feature 'signing up a user' do
     scenario 'failing test with invalid params' do
       visit new_user_registration_path
@@ -9,12 +8,12 @@ feature 'user authentication', type: :feature do
       click_on 'Sign up'
 
       expect(current_path).to eq(users_path)
-      expect(page).to have_content("prohibited this user from being saved:")
+      expect(page).to have_content('prohibited this user from being saved:')
     end
 
     scenario 'successful test with valid params' do
       create_user
-  
+
       expect(current_path).to eq('/')
       expect(page).to have_content('Welcome! You have signed up successfully.')
     end
@@ -43,7 +42,7 @@ feature 'user authentication', type: :feature do
       expect(page).to have_content('Signed in successfully.')
     end
   end
-   
+
   def create_user
     visit new_user_registration_path
     fill_in 'user_name', with: 'John Doe'
@@ -52,5 +51,4 @@ feature 'user authentication', type: :feature do
     fill_in 'user_password_confirmation', with: 'password'
     click_on 'Sign up'
   end
-  
 end
