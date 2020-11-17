@@ -1,0 +1,12 @@
+<h2>Requests <%= @pending_friendships.count %></h2>
+<% @pending_friendships.each do |pending|%>
+    <div class="user-card">
+        <div class="rounded-image">
+            <%= gravatar_for pending.invitee, size: 150 %>
+        </div>
+        <p class="user-header"><%= pending.invitee.name%></p>
+        <div class="user-footer">
+            <%= button_to('Cancel', friendship_path(id: pending.id),class:'btn-cancel', method: :delete) %>
+        </div>
+    </div>
+<% end %>

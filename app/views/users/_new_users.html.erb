@@ -1,0 +1,9 @@
+<div class="user-card">
+  <div class="rounded-image">
+    <%= gravatar_for user, size: 150 %>
+  </div>
+  <p class="user-header"><%= user.name%></p>
+  <div class="user-footer">
+    <%= button_to 'Send Request', friendships_path, params: {:id   => user.id }  %>
+  </div>
+</div>
