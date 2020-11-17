@@ -35,7 +35,7 @@ RSpec.describe 'User Model Tests', type: :model do
 
   end
 
-  describe "user methods" do
+  describe 'user methods' do
     before(:example) do
       @invitor = FactoryBot.create(:user)
       @invitee = FactoryBot.create(:user)
@@ -50,7 +50,7 @@ RSpec.describe 'User Model Tests', type: :model do
       expect(@invitee.received_friends).to eq([])
     end
 
-    it "should check if user is friend with another user" do
+    it 'should check if user is friend with another user' do
       isFriend = @invitor.friend_with? (@invitee)
       expect(isFriend).to be false 
     end

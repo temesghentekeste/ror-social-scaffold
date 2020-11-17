@@ -18,17 +18,17 @@ RSpec.describe FriendshipsController, type: :controller do
     end
 
     describe 'PUT #update' do
-    it 'confirms a friendship' do
-      @invitor = FactoryBot.create(:user)
-      sign_in @invitor
-      
-      @friendship = FactoryBot.create(:friendship)
+      it 'confirms a friendship' do
+        @invitor = FactoryBot.create(:user)
+        sign_in @invitor
+        
+        @friendship = FactoryBot.create(:friendship)
 
-      put :update, params: { id: @friendship.id, confirmed: true }
-      expect(response).to redirect_to(users_path)
-      expect(response).to have_http_status(302)
+        put :update, params: { id: @friendship.id, confirmed: true }
+        expect(response).to redirect_to(users_path)
+        expect(response).to have_http_status(302)
+      end
     end
-  end
 
   describe 'DELETE #destroy' do
     it 'removes a friendship entry from database' do
@@ -41,6 +41,4 @@ RSpec.describe FriendshipsController, type: :controller do
       expect(response).to have_http_status(302)
     end
   end
-
-  
 end
