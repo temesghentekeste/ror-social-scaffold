@@ -1,0 +1,13 @@
+<h2>Incoming Requests:  <%= @received_friendships.count %></h2>
+<% @received_friendships.each do |received|%>
+    <div class="user-card">
+        <div class="rounded-image">
+            <%= gravatar_for received.invitor, size: 150 %>
+        </div>
+        <p class="user-header"><%= received.invitor.name%></p>
+        <div class="user-footer">
+            <%= button_to('Confirm', friendship_path(received.id), method: :put) %>
+            <%= button_to('Cancel', friendship_path(id: received.id),class:'btn-cancel', method: :delete) %>
+        </div>
+    </div>
+<% end %>
