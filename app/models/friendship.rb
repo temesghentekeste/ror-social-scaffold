@@ -1,6 +1,5 @@
 class Friendship < ApplicationRecord
   belongs_to :invitor, class_name: 'User'
-  # validates :invitor, uniqueness: { scope: :invitee }
   validates_uniqueness_of :invitee, scope: :invitor
   validates_uniqueness_of :invitor, scope: :invitee
 
