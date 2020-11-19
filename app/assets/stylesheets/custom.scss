@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
+$primary-color-dark: #2d5d97;
+$primary-color: #498dc5;
+$primary-color-light: #bde1e2;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
+$success-color: #424699;
 
 * {
   margin: 0;
@@ -57,7 +58,7 @@ a {
   }
 
   .menu {
-    width: 80%;
+    width: 60%;
     justify-content: space-between;
 
     .menu-item {
@@ -81,16 +82,16 @@ a {
   height: 30px;
   text-align: center;
   padding: 5px;
-  color: dimgrey;
+  color: rgb(255, 255, 255);
   font-size: 14px;
 }
 
 .notice {
-  background-color: #d4f6c6;
+  background-color: #2a5c8b;
 }
 
 .alert {
-  background-color: #f6cfc6;
+  background-color: #e09685;
 }
 
 .errors {
@@ -157,7 +158,7 @@ form {
     }
 
     input[type="checkbox"] {
-      width: fit-content;
+      width: 90%;
     }
   }
 
@@ -194,6 +195,109 @@ form {
   text-align: center;
   margin-bottom: 16px;
   text-transform: capitalize;
+}
+
+.likes-container {
+  display: inline-block;
+  font-weight: bold;
+
+  .fa-thumbs-up {
+    color: $primary-color-dark;
+  }
+}
+
+.friends-count {
+  margin: 1rem auto;
+
+  .friends,
+  .mutual,
+  .posts {
+    background: $primary-color-dark;
+    padding: 0.5rem;
+    margin-right: 0.4rem;
+    font-weight: 600;
+    border-radius: 1rem;
+  }
+
+  .friends {
+    background: $primary-color;
+    margin-right: 0.4rem;
+  }
+
+  .posts {
+    background: $primary-color-light;
+    color: $primary-color-dark;
+  }
+}
+
+.user-card {
+  background: rgb(40, 78, 136);
+  background: linear-gradient(90deg, rgb(33, 74, 136) 20%, rgba(86, 146, 95, 1) 41%, rgba(6, 30, 52, 1) 100%);
+  border-radius: 2%;
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bdbdbd;
+  color: white;
+
+  p {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  .user-footer {
+    background: #bdbdbd;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 1rem auto;
+    border: 1px solid green;
+
+    form {
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-cancel {
+      background-color: red;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+.users-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10px;
+
+  .users-list {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .user-card {
+      margin-right: 3rem;
+    }
+  }
+
+  .profile-link {
+    font-size: 0.8em;
+    margin: 0 0 8px 0;
+    color: $primary-color-dark;
+  }
 }
 
 .timeline {
@@ -275,23 +379,6 @@ form {
   }
 }
 
-.users-section {
-  width: 100%;
-  margin: 10px;
-
-  .users-list li {
-    margin-bottom: 16px;
-    text-transform: capitalize;
-    font-size: 1.2em;
-  }
-
-  .profile-link {
-    font-size: 0.8em;
-    margin: 0 0 8px 0;
-    color: $primary-color-dark;
-  }
-}
-
 .user-section {
   width: 100%;
   margin-left: 16px;
@@ -322,6 +409,46 @@ form {
   }
 }
 
+.rounded-image img {
+  border-radius: 50%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.btn {
+  padding: 0.6rem 0.8rem;
+  margin: 0.5rem;
+  font-weight: 600;
+  border-radius: 15px;
+
+  &-dark {
+    background: #9aa78f;
+  }
+
+  &-warning {
+    background: $success-color;
+    color: $primary-color-light;
+  }
+}
+
+.underline {
+  width: 12rem;
+  height: 0.25rem;
+  background: $primary-color-dark;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-heading {
+  margin: 2rem 0 0.7rem;
+}
+
 @media only screen and (min-width: 480px) {
   form {
     width: 60%;
@@ -329,7 +456,6 @@ form {
 
   .new_post,
   .timeline,
-  .users-section,
   .user-section {
     width: 70%;
   }
@@ -342,8 +468,11 @@ form {
 
   .new_post,
   .timeline,
-  .users-section,
   .user-section {
     width: 50%;
+  }
+
+  .user-card {
+    width: 40%;
   }
 }

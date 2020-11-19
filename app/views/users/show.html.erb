@@ -1,5 +1,7 @@
 <section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
+  <div class="d-flex justify-center">
+    <%= render 'profile_info'%>
+  </div>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
