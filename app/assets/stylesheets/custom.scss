@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap");
 
-$primary-color-dark: #689f38;
-$primary-color: #8bc34a;
-$primary-color-light: #dcedc8;
+$primary-color-dark: #2d5d97;
+$primary-color: #498dc5;
+$primary-color-light: #bde1e2;
 $primary-color-text: #212121;
 $divider-color: #bdbdbd;
+$success-color: #424699;
 
 * {
   margin: 0;
@@ -81,16 +82,16 @@ a {
   height: 30px;
   text-align: center;
   padding: 5px;
-  color: dimgrey;
+  color: rgb(255, 255, 255);
   font-size: 14px;
 }
 
 .notice {
-  background-color: #d4f6c6;
+  background-color: #2a5c8b;
 }
 
 .alert {
-  background-color: #f6cfc6;
+  background-color: #e09685;
 }
 
 .errors {
@@ -205,9 +206,33 @@ form {
   }
 }
 
+.friends-count {
+  margin: 1rem auto;
+
+  .friends,
+  .mutual,
+  .posts {
+    background: $primary-color-dark;
+    padding: 0.5rem;
+    margin-right: 0.4rem;
+    font-weight: 600;
+    border-radius: 1rem;
+  }
+
+  .friends {
+    background: $primary-color;
+    margin-right: 0.4rem;
+  }
+
+  .posts {
+    background: $primary-color-light;
+    color: $primary-color-dark;
+  }
+}
+
 .user-card {
-  background: rgb(21, 19, 50);
-  background: linear-gradient(90deg, rgba(21, 19, 50, 1) 20%, rgba(86, 146, 95, 1) 41%, rgba(6, 30, 52, 1) 100%);
+  background: rgb(40, 78, 136);
+  background: linear-gradient(90deg, rgb(33, 74, 136) 20%, rgba(86, 146, 95, 1) 41%, rgba(6, 30, 52, 1) 100%);
   border-radius: 2%;
   width: 100%;
   margin: 1rem 0;
@@ -392,21 +417,28 @@ form {
   display: flex;
 }
 
+.justify-center {
+  justify-content: center;
+}
+
 .btn {
   padding: 0.6rem 0.8rem;
   margin: 0.5rem;
+  font-weight: 600;
+  border-radius: 15px;
 
   &-dark {
     background: #9aa78f;
   }
 
   &-warning {
-    background: #a39b23;
+    background: $success-color;
+    color: $primary-color-light;
   }
 }
 
 .underline {
-  width: 5rem;
+  width: 12rem;
   height: 0.25rem;
   background: $primary-color-dark;
   margin-left: auto;
@@ -414,7 +446,7 @@ form {
 }
 
 .page-heading {
-  margin-top: 2rem;
+  margin: 2rem 0 0.7rem;
 }
 
 @media only screen and (min-width: 480px) {

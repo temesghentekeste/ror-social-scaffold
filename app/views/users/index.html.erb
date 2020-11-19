@@ -1,17 +1,7 @@
 <section class="users-section">
-  <div class="user-card">
-      <div class="rounded-image">
-        <%= gravatar_for current_user, size: 150 %>
-      </div>
-      <h2><%= current_user.name %></h2>
-       <span><%= pluralize(current_user.posts.count, "post") if current_user.posts %></span>
-      <div class="user-info d-flex">
-          <%= link_to 'Your Profile', user_path(current_user), class: 'btn btn-warning' %>
-      </div>
-  </div>
+  <%= render 'profile_info'%>
   <h2 class="page-heading">All Users</h2>
   <div class="underline"></div>
-
   <div class="users-list">
     <%= render @users %>
   </div>

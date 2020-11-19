@@ -3,6 +3,13 @@
     <%= gravatar_for user, size: 150 %>
   </div>
   <p class="user-header"><%= user.name%></p>
+
+  <div class="friends-count">
+    <%= friends_count(user)%>
+    <%= mutual_friends_count(user)%>
+    <%= posts_count(user)%>
+  </div>
+
   <div class="user-footer">
     <%= button_to('Cancel Request', friendship_path(id: friendship.id),class:'btn-cancel', method: :delete) %>
   </div>

@@ -1,0 +1,13 @@
+<div class="user-card">
+  <div class="rounded-image">
+    <%= gravatar_for current_user, size: 150 %>
+  </div>
+  <h2><%= current_user.name %></h2>
+  <div class="friends-count">
+    <%= friends_count(current_user)%>
+    <%= posts_count(current_user)%>
+  </div>
+  <div class="user-info d-flex">
+      <%= link_to 'Your Profile', user_path(current_user), class: 'btn btn-warning' if current_page?(users_path)%>
+  </div>
+</div>

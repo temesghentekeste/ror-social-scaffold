@@ -18,4 +18,19 @@ module UserHelper
 
     end
   end
+
+  def mutual_friends_count(user)
+    mutual_count = (user.confirmed_friends & current_user.confirmed_friends).count
+    render 'mutual_friends_count', mutual_count: mutual_count if mutual_count.positive?
+  end
+
+  def friends_count(user)
+    friends_count = user.confirmed_friends.count
+    render 'friends_count', friends_count: friends_count if friends_count.positive?
+  end
+
+  def posts_count(user)
+    posts_count = user.posts.count
+    render 'posts_count', posts_count: posts_count if posts_count.positive?
+  end
 end
