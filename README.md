@@ -1,15 +1,34 @@
-# Scaffold for social media app with Ruby on Rails
+# Fake Book
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+This project is a microverse solo project which is part of the requirements of the microverse main curriculum in the Rails section. The project is about building a mini social site that utilizes friendship in a way way facebook uses.
+
+In this project, signed in users  can send friend request among each and accept or reject friend requests.
 
 ## Built With
 
-- Ruby v2.7.0
-- Ruby on Rails v5.2.4
+- Ruby on Rails (Version: 6.0.3.2)
+- Ruby (Version: 2.7.1)
+- RSpec
+- Capybara
+- Shoulda Matchers
+- Factory Bot Rails
+- Faker
+- Devise gem
+- PostgreSQL
 
-## Live Demo
+## 🔴 Live Demo <a name = "live"></a>
+*Click [here](https://fakebook-temesghen.herokuapp.com/) in order to see a Live Demo of this project.**
 
-TBA
+
+## Screenshots <a name = "sc"></a>
+
+![screenshot](./app/assets/images/screenshot.png)
+
+
+## ER Diagram
+
+![ERD](./docs/social-scaffold-ERD.png)
+
 
 
 ## Getting Started
@@ -69,25 +88,28 @@ Open `http://localhost:3000/` in your browser.
 
 TBA
 
-## Authors
 
-TBA
+## ✒️  Author <a name = "author"></a>
+
+👤 **Temesghen Tekeste**
+
+- Github: [@temesghentekeste](https://github.com/temesghentekeste)
+- Twitter: [@temesghentekes1](https://twitter.com/temesghentekes1)
+- Linkedin: [temsghen-tekeste](https://www.linkedin.com/in/temesghentekeste/)
+
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/temesghentekeste/ror-social-scaffold/issues).
 
-## Show your support
+
+## 👍 Show your support
 
 Give a ⭐️ if you like this project!
 
-## Acknowledgments
+## :clap: Acknowledgements
 
-TBA
-
-## 📝 License
-
-TBA
-
+- The Odin Project: [@theodinproject](https://www.theodinproject.com/)
+- Microverse: [@microverse](https://www.microverse.org/)
